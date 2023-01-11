@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -33,4 +34,5 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userEntity);
         return mapper.map(userEntity, UserDto.class);
     }
+
 }
