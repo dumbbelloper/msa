@@ -4,8 +4,27 @@ server:
 spring:
   application:
     name: config-service
+  profiles:
+    active: native
   cloud:
     config:
       server:
-        git:
-          uri: file:///Users/dumbbelloper/Project/git-local-repo
+        native:
+          search-locations: file://${user.home}/Project/native-file-repo
+#        git:
+#          uri: file:///Users/dumbbelloper/Project/git-local-repo
+          uri: https://github.com/dumbbelloper/spring-cloud-config
+  #          username: [username]
+#          password: [password]
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,busrefresh
+#        include: refresh, health, beans, busrefresh, info, metrics, prometheus

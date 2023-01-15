@@ -13,11 +13,11 @@ spring:
   #    sampler:
   #      probability: 1.0
 
-#  rabbitmq:
-#    host: 127.0.0.1
-#    port: 5672
-#    username: guest
-#    password: guest
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
   h2:
     console:
       enabled: true
@@ -37,7 +37,7 @@ eureka:
   #    ip-address: ${server.address}
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8761/eureka
+      defaultZone: http://localhost:8761/eureka
     fetch-registry: true
     register-with-eureka: true
 
@@ -48,12 +48,13 @@ logging:
   level:
     com.example.userservice.client: DEBUG
 
-#management:
-#  endpoints:
-#    web:
-#      exposure:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, busrefresh
 #        include: refresh, health, beans, busrefresh, info, metrics, prometheus
-#
+
 #token:
 #  expiration_time: 86400000
 #  secret: user_token
