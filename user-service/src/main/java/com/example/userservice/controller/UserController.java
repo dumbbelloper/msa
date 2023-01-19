@@ -18,13 +18,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-public class UsersController {
+public class UserController {
 
     private Environment env;
     private final UserService userService;
 
-    @Autowired
-    public UsersController(Environment env, UserService userService) {
+    public UserController(Environment env, UserService userService) {
         this.env = env;
         this.userService = userService;
     }

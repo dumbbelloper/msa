@@ -32,20 +32,11 @@ public class UserServiceImpl implements UserService {
 //    private RestTemplate restTemplate;
     private OrderServiceClient orderServiceClient;
 
-//    @Autowired
-//    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, Environment env, RestTemplate restTemplate) {
-//        this.userRepository = userRepository;
-//        this.passwordEncoder = passwordEncoder;
-//        this.env = env;
-//        this.restTemplate = restTemplate;
-//    }
-
-    @Autowired
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, Environment env, OrderServiceClient orderServiceClient) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.env = env;
-        this.orderServiceClient = orderServiceClient
+        this.orderServiceClient = orderServiceClient;
     }
 
     @Override
