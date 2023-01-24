@@ -30,10 +30,10 @@ import java.util.UUID;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private BCryptPasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder passwordEncoder;
     private Environment env;
 //    private RestTemplate restTemplate;
-    private OrderServiceClient orderServiceClient;
+    private final OrderServiceClient orderServiceClient;
 
     public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder, Environment env, OrderServiceClient orderServiceClient) {
         this.userRepository = userRepository;
@@ -90,14 +90,18 @@ public class UserServiceImpl implements UserService {
 
         /* using as feign client*/
         /* feign exception handling */
-        List<ResponseOrder> orderList = null;
-        try {
-            orderList = orderServiceClient.getOrders(userId);
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//        List<ResponseOrder> orderList = null;
+//        try {
+//            orderList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
         /* using as feign client*/
+
+        /* ErrorDecoder */
+        List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
         userDto.setOrders(orderList);
+        /* ErrorDecoder */
         return userDto;
     }
 
